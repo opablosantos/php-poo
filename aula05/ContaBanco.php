@@ -8,65 +8,68 @@ class ContaBanco
     private $dono;
     private $saldo;
     private $status;
-    public $deposito;
-    public $saque;
 
-    public function __construct($numConta, $tipo, $dono)
-    {
-        $this->numConta = $numConta;
-        $this->tipo = $tipo;
-        $this->dono = $dono;
+    public function __construct() {
+        $this->setSaldo(0);
+        $this->setStatus(false);
+        echo "<p>Conta criada com sucesso!</p>";
     }
 
-    public function abrirConta()
-    {
-        $this->status = true;
-        if ($this->tipo == "cc") {
-            $this->saldo = 50;
-        } elseif ($this->tipo == "cp") {
-            $this->saldo = 150;
+    public function abrirConta($t) {
+        $this->setTipo($t);
+        $this->setStatus(true);
+        if ($t == "cc") {
+            $this->setSaldo(50);
+        } elseif ($t == "cp") {
+            $this->setSaldo(150);
         }
     }
 
-    public function fecharConta($saldo)
+    public function fecharConta()
     {
-        if ($this->saldo == 0) {
-            $this->status = false;
-            echo "Sua conta foi encerrada com sucesso!";
+        if ($this->getSaldo() > 0) {
+            echo "<p>Sua conta consta com saldo positivo. Não pode ser encerrada!</p>";
+        } elseif ($this->getSaldo() < 0) {
+            echo "<p>Sua conta consta com saldo negativo. Não pode ser encerrada!</p>";
         } else {
-            echo "Você possui R$ $saldo em sua conta. Antes de encerrá-la, precisará sacar esse valor.";
-            $this->sacar($saldo);
+            $this->setStatus(false);
+            echo "<p>Conta de ".$this->getDono()." encerrada com sucesso!</p>";
         }
     }
 
-    public function depositar()
-    {
-        if ($this->status == true) {
-            $this->saldo += $this->deposito;
+    public function depositar($v) {
+        if ($this->getStatus()) {
+            $this->setSaldo($this->getSaldo() + $v);
+            echo "<p>Depósito de R$ $v realizado na conta de ".$this->getDono().".</p>";
         } else {
             echo "Sua conta não está ativa. Não será possível realizara o depósito.";
         }
     }
 
-    public function sacar()
-    {
-        if (($this->status == true) && ($this->saque < $this->saldo)) {
-            $this->saldo -= $this->saque;
-            echo "Saque liberado com sucesso! Retire o seu dinheiro no local indicado.";
-        }
-        elseif (($this->status == true) && ($this->saque > $this->saldo)) {
-            echo "Você não possui saldo suficiente para esta operação. Favor escolher novo valor";
-        }
-        else {
-            echo "Sua conta não está ativa. Não será possível realizara o depósito.";
+    public function sacar($v) {
+        if ($this->getStatus()) {
+            if ($this->getSaldo() >= $v) {
+                $this->setSaldo($this->getSaldo() - $v);
+                echo "<p>Saque de R$ $v realizado na conta de ".$this->getDono().".</p>";
+            } else {
+                echo "<p>Saldo insuficiente para saque</p>";
+            }
+        } else {
+            echo "<p>Sua conta consta como inativa.</p>";
         }
     }
 
     public function pagarMensal() {
-        if ($this->tipo == "cc") {
-            $this->saldo -= 12;
-        } elseif ($this->tipo == "cp") {
-            $this->saldo -= 20;
+        if ($this->getTipo() == "cc") {
+            $v = 12;
+        } elseif ($this->getTipo() == "cp") {
+            $v= 20;
+        }
+        if ($this->getStatus()) {
+            $this->setSaldo($this->getSaldo() - $v);
+            echo "<p>Mensalidade de R$ $v cobrada na conta de ".$this->getDono().".</p>";
+        } else {
+            echo "<p>Porblemas com a conta. Não posso cobrar.</p>";
         }
     }
 
