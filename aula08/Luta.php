@@ -34,8 +34,8 @@ class Luta {
                     break;
                 case 1: //Desafiado vence
                     echo "<p>".$this->desafiado->getNome()." venceu!</p>";
-                    $this->desafiado->ganharLuta;
-                    $this->desafiante->perderLuta;
+                    $this->desafiado->ganharLuta();
+                    $this->desafiante->perderLuta();
                     break;
                 case 2: //Desafiante vence
                     echo "<p>".$this->desafiante->getNome()." venceu!</p>";
