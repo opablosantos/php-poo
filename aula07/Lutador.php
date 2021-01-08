@@ -19,9 +19,9 @@ class Lutador
         echo "<p>--------------------------</p>";
         echo "<p>Chegou a hora! O lutador ".$this->getNome();
         echo " veio diretamente de ".$this->getNacionalidade();
-        echo " tem ".$this->getIdade()." anos e pesa ".$this->getPeso()."kg.";
-        echo "<br/>Ele tem ".$this->getVitorias()." Vitórias,";
-        echo $this->getDerrotas()." derrotas e ".$this->getEmpates()."empates!</p>";
+        echo ", tem ".$this->getIdade()." anos e pesa ".$this->getPeso()."kg.";
+        echo "<br/>Ele tem ".$this->getVitorias()." Vitórias, ";
+        echo $this->getDerrotas()." derrotas e ".$this->getEmpates()." empates!</p>";
     }
 
     function status() {
