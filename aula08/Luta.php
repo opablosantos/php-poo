@@ -1,6 +1,7 @@
 <?php
 require_once 'Lutador.php';
 class Luta {
+
     //ATRIBUTOS
     private $desafiado;
     private $desafiante;
@@ -8,4 +9,11 @@ class Luta {
     private $aprovada;
 
     //MÉTODOS PÚBLICOS
+    public function marcarLuta() {
+
+    }
+
+    public function lutar() {
+        
+    }
 }
