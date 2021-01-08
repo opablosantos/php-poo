@@ -24,15 +24,15 @@ class Lutador
     }
 
     function ganharLuta() {
-
+        $this->setVitorias($this->getVitorias() + 1);
     }
 
     function perderLuta() {
-
+        $this->setDerrotas($this->getDerrotas() + 1);
     }
 
     function empatarLuta() {
-
+        $this->setEmpates($this->getEmpates() + 1);
     }
 
     //Métodos Especiais
@@ -47,7 +47,7 @@ class Lutador
         $this->empates = $em;
     }
 
-    //Getters e setters
+    //Getters e Setters
     public function getNome() {
         return $this->nome;
     }
@@ -86,14 +86,25 @@ class Lutador
 
     public function setPeso($peso) {
         $this->peso = $peso;
+        $this->setCategoria();
     }
 
     public function getCategoria() {
         return $this->categoria;
     }
 
-    public function setCategoria($categoria) {
-        $this->categoria = $categoria;
+    public function setCategoria() {
+        if ($this->getPeso() < 52.2) {
+            $this->categoria = "Inválido";
+        } elseif ($this->getPeso() <= 70.3) {
+            $this->categoria = "Leve";
+        } elseif ($this->getPeso() <= 83.9) {
+            $this->categoria = "Médio";
+        } elseif ($this->getPeso() <= 120.2) {
+            $this->categoria = "Pesado";
+        } else {
+            $this->categoria = "Inválido";
+        }
     }
 
     public function getVitorias() {
