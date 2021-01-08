@@ -26,8 +26,8 @@ class Lutador
 
     function status() {
         echo "<p>--------------------------</p>";
-        echo "<p>".$this->getNome()." é um peso ".$this->getCategoria();
-        echo " e já ganhou ".$this->getVitorias()." vezes,";
+        echo "<p>".$this->getNome()." é um peso '".$this->getCategoria();
+        echo "'. Já ganhou ".$this->getVitorias()." vezes, ";
         echo "perdeu ".$this->getDerrotas()." vezes ";
         echo "e empatou ".$this->getEmpates()." vezes!";
     }
@@ -50,7 +50,7 @@ class Lutador
         $this->nacionalidade = $na;
         $this->idade = $id;
         $this->altura = $al;
-        $this->peso = $pe;
+        $this->setPeso($pe);
         $this->vitorias = $vi;
         $this->derrotas = $de;
         $this->empates = $em;
@@ -102,7 +102,7 @@ class Lutador
         return $this->categoria;
     }
 
-    public function setCategoria() {
+    private function setCategoria() {
         if ($this->getPeso() < 52.2) {
             $this->categoria = "Inválido";
         } elseif ($this->getPeso() <= 70.3) {
