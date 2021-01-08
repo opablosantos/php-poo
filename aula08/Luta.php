@@ -10,7 +10,7 @@ class Luta {
 
     //MÉTODOS PÚBLICOS
     public function marcarLuta($l1, $l2) {
-        if ($l1.getCategoria() == $l2.getCategoria() && ($l1 != $l2)) {
+        if ($l1->getCategoria() == $l2->getCategoria() && ($l1 != $l2)) {
             $this->aprovada = true;
             $this->desafiado = $l1;
             $this->desafiante = $l2;
