@@ -16,11 +16,20 @@ class Lutador
 
     //Métodos
     function apresentar() {
-
+        echo "<p>--------------------------</p>";
+        echo "<p>Chegou a hora! O lutador ".$this->getNome();
+        echo " veio diretamente de ".$this->getNacionalidade();
+        echo " tem ".$this->getIdade()." anos e pesa ".$this->getPeso()."kg.";
+        echo "<br/>Ele tem ".$this->getVitorias()." Vitórias,";
+        echo $this->getDerrotas()." derrotas e ".$this->getEmpates()."empates!</p>";
     }
 
     function status() {
-
+        echo "<p>--------------------------</p>";
+        echo "<p>".$this->getNome()." é um peso ".$this->getCategoria();
+        echo " e já ganhou ".$this->getVitorias()." vezes,";
+        echo "perdeu ".$this->getDerrotas()." vezes ";
+        echo "e empatou ".$this->getEmpates()." vezes!";
     }
 
     function ganharLuta() {
