@@ -17,6 +17,19 @@
     $l[3] = new Lutador("Dead Code", "Austrália", 28, 1.93, 81.6, 13, 0, 2);
     $l[4] = new Lutador("UFOCobol", "Brasil", 37, 1.70, 119.3, 5, 4, 3);
     $l[5] = new Lutador("Nerdaart", "EUA", 38, 1.81, 105.7, 12, 2, 4);
+
+    echo "<h2>-----------Primeira Luta-----------</h2>";
+    $UEC01 = new Luta();
+    $UEC01->marcarLuta($l[0], $l[1]);
+    $UEC01->lutar();
+    echo "<br/><br/><h2>-----------Segunda Luta-----------</h2>";
+    $UEC02 = new Luta();
+    $UEC02->marcarLuta($l[2], $l[3]);
+    $UEC02->lutar();
+    echo "<br/><br/><h2>-----------Terceira Luta-----------</h2>";
+    $UEC03 = new Luta();
+    $UEC03->marcarLuta($l[4], $l[5]);
+    $UEC03->lutar();
 ?>
 </pre>
 </body>
