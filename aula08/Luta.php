@@ -1,3 +1,7 @@
+<html>
+<head>
+    <link rel="stylesheet" href="_css/estilo.css"/>
+</head>
 <?php
 require_once 'Lutador.php';
 class Luta {
@@ -28,17 +32,17 @@ class Luta {
             $vencedor = rand(0, 2);
             switch($vencedor) {
                 case 0: //Empate
-                    echo "<p>Empate!</p>";
+                    echo "<p><span class='foco'>Empate!</span></p>";
                     $this->desafiado->empatarLuta();
                     $this->desafiante->empatarLuta();
                     break;
                 case 1: //Desafiado vence
-                    echo "<p>".$this->desafiado->getNome()." venceu!</p>";
+                    echo "<p><span class='foco'>".$this->desafiado->getNome()." venceu!</span></p>";
                     $this->desafiado->ganharLuta();
                     $this->desafiante->perderLuta();
                     break;
                 case 2: //Desafiante vence
-                    echo "<p>".$this->desafiante->getNome()." venceu!</p>";
+                    echo "<p><span class='foco'>".$this->desafiante->getNome()." venceu!</span></p>";
                     $this->desafiado->perderLuta();
                     $this->desafiante->ganharLuta();
                     break;
@@ -80,4 +84,5 @@ class Luta {
     public function setAprovada($aprovada) {
         $this->aprovada = $aprovada;
     }
-}
+}?>
+</html>
